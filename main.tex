@@ -1,0 +1,171 @@
+\documentclass[10pt, a4papper]{article}
+\usepackage[utf8]{vietnam}
+\usepackage[vietnamese]{babel}
+
+\usepackage{tikz}
+
+\usepackage{fancyhdr}
+\usepackage{geometry}[right = 2cm, left = 2cm, top = 2cm, bottom = 2cm]
+\usepackage{indentfirst}
+\usepackage[inline]{asymptote}
+
+
+\definecolor{xanh}{RGB}{70,130,180}
+\usepackage{fouriernc} % làm tăng độ đậm của chữ
+\usepackage{tikz-3dplot} 
+
+\fancypagestyle{myfooter}{
+  \fancyhf{} % Xóa nội dung hiện tại của header và footer
+  \renewcommand{\headrulewidth}{0pt} % Xóa đường kẻ phía trên
+  \renewcommand{\footrulewidth}{0pt}
+  \fancyhead[C]{
+
+\begin{tikzpicture}[remember picture,overlay]
+    % đoạn dài
+    \draw[thick, fill = red!50, red!50] (9, 8)--(-11, 5)--(-11,8)--(9,8);
+    % đoạn to
+    \draw[thick, fill = red, red] (-11, 2)--(-11,8)--(-2,8)--(-11,2);
+    \draw[thick, fill = red, red!50] (-11, 2)--(-11,8)--(2,8)--(-11,2);
+    \draw[fill = black] (-5.15,5.85) circle (1pt);
+    \draw[fill = red, red] (2, 8)--(-5.15, 5.85)--(-11, 5)--(-11,8)--(2,8);
+    \draw[fill = red!70, red!70] (-5.15, 5.85)--(-11,2)--(-11,5)--(-5.15, 5.85);
+    \draw[fill = red!50, red!50] (-5.15, 5.85)--(-11,2)--(-1.5, 6.44)--(-5.15, 5.85);
+    \draw[fill = red!70, red!70] (-5.15, 5.85)--(-1.5, 6.44)--(2,8)--(-2,8)--(-5.15, 5.85);
+
+\end{tikzpicture}  
+ }
+    \fancyhead[r]{
+\indent\vspace{2cm}
+\begin{tikzpicture}[thick,scale=2,line join=bevel,z=-5.5, rotate = -30]
+\coordinate (A1) at (0,0,-1);
+\coordinate (A2) at (-1,0,0);
+\coordinate (A3) at (0,0,1);
+\coordinate (A4) at (1,0,0);
+\coordinate (B1) at (0,1,0);
+\coordinate (C1) at (0,-1,0);
+
+\draw (A1) -- (A2) -- (B1) -- cycle;
+\draw (A4) -- (A1) -- (B1) -- cycle;
+\draw (A1) -- (A2) -- (C1) -- cycle;
+\draw (A4) -- (A1) -- (C1) -- cycle;
+\draw [thick,black!50,fill opacity=0.7,fill=red] (A2) -- (A3) -- (B1) -- cycle;
+\draw [black!50,fill opacity=0.7,fill=red!50] (A3) -- (A4) -- (B1) -- cycle;
+\draw [black!50,fill opacity=0.7,fill=red] (A2) -- (A3) -- (C1) -- cycle;
+\draw [black!50,fill opacity=0.7,fill=red] (A3) -- (A4) -- (C1) -- cycle;
+\end{tikzpicture}
+% \begin{tikzpicture}[scale = 0.2,rotate = 45, line join = round]
+% \def\r{2}
+% \foreach \i/\mau in {0/red, 1/blue,2/orange,3/cyan,4/teal,5/brown}
+% \draw[gray, fill = \mau!50, rotate =\i*60,ultra thin]
+% (180:\r)--++(60:3*\r)--++(0:\r)--++(120:2*\r)--++(-120:4*\r)--cycle
+% (0:\r)++(60:\r)--++(0:\r)--++(-60:3*\r)--++(-120:\r)--cycle;
+% \end{tikzpicture}
+
+    
+}
+
+
+
+
+
+  
+  \fancyfoot[C]{ % Chèn hình TikZ vào footer
+
+    \begin{tikzpicture}[remember picture,overlay]
+      % \draw[thick] (0,0)--(1,1);
+      
+      \draw[thick,red, fill = red] (-4, -4) -- (11,2)--(11,-4)--(-4,-4);
+
+       
+     
+         % đường dài
+      \draw[thick,red!50, fill = red!50] (-9, -4) -- (11,-1)--(11,-4)--(-4,-4);
+      % đường to
+      \draw[thick,red!70, fill = red!70] (1, -4) -- (11,2)--(11,-4)--(-4,-4);
+
+      \draw[thick,red, fill = red] (11,-1)--(4.3,-2)--(1,-4)--(11,-4)--(11,-2);
+
+      \draw[thick,red!70, fill = red!70] (4.3,-2)--(1,-4)--(-4,-4)--(-1,-2.8)--(4.3,-2);
+      \draw[thick, red!50, fill = red!50] (11,2)--(4.3,-2)--(-1,-2.8)--(11,2);
+      
+    %   \draw [help lines] (-11,-4) grid (11,10);
+    \end{tikzpicture}
+    
+  }
+  \fancyfoot[r]{
+  \indent\vspace{-3cm} % chỉnh lên xuống
+  
+    \tdplotsetmaincoords{65}{100}
+\begin{tikzpicture}[remember picture,overlay,tdplot_main_coords,scale=0.5,line join=round, rotate = 200]
+        
+    \pgfmathsetmacro\a{2}
+    \pgfmathsetmacro{\phi}{\a*(1+sqrt(5))/2}
+    \path 
+    coordinate(A) at (0,\phi,\a)
+    coordinate(B) at (0,\phi,-\a)
+    coordinate(C) at (0,-\phi,\a)
+    coordinate(D) at (0,-\phi,-\a)
+    coordinate(E) at (\a,0,\phi)
+    coordinate(F) at (\a,0,-\phi)
+    coordinate(G) at (-\a,0,\phi)
+    coordinate(H) at (-\a,0,-\phi)
+    coordinate(I) at (\phi,\a,0)
+    coordinate(J) at (\phi,-\a,0)
+    coordinate(K) at (-\phi,\a,0)
+    coordinate(L) at (-\phi,-\a,0); 
+    
+    ;
+        
+        \draw[ thick,white!50, fill = red!70] % ban đầu là utra thick
+        (A) -- (I) -- (B) --cycle 
+        (F) -- (I) -- (B) --cycle 
+        (F) -- (I) -- (J) --cycle
+        (F) -- (D) -- (J) --cycle
+        (C) -- (D) -- (J) --cycle
+        (C) -- (E) -- (J) --cycle
+        (I) -- (E) -- (J) --cycle
+        (I) -- (E) -- (A) --cycle
+        (G) -- (E) -- (A) --cycle
+        (G) -- (E) -- (C) --cycle; 
+\end{tikzpicture}
+  }
+}
+
+\pagestyle{myfooter}
+
+\fancypagestyle{myheader}{
+\fancyhf{}
+  
+\lhead{\textcolor{gray}{Vũ Văn Huy 20216931 MI2 K66}}
+\rhead{\textcolor{gray}{Date: {~~~/~~~/~~~~}; Page No.: {~~~~}}}
+
+\cfoot{\textcolor{gray}{Ha Noi University of Science and Technology}}
+
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+% Save standard definitions
+\let\HeadRule\headrule
+\let\FootRule\footrule
+% Add color to standard definitions.
+\renewcommand\headrule{\color{gray}\HeadRule}
+\renewcommand\footrule{\textcolor{gray}{\FootRule}}
+}
+
+
+
+\begin{document}
+\include{titlepage}
+
+\newpage
+\pagestyle{myheader} 
+
+\newpage
+\tableofcontents
+\section{}{1}
+\subsection{1}
+
+
+
+\end{document}
+
